@@ -2,12 +2,14 @@ import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Icon } from 'leaflet';
 // import * as parkData from './data/skateboard-parks.json';
+import PngIcon from './images/leaf-green.png';
 import './App.css';
-import LocationMarker from './LocationMarker';
+
+import LocationMarker from './LocationMarker'; //현재위치 찾아주는 기능
 
 export const icon = new Icon({
-  iconUrl: '/skateboarding.svg',
-  iconSize: [25, 25],
+  iconUrl: PngIcon,
+  iconSize: [38, 95],
 });
 
 export default function App() {
@@ -15,7 +17,7 @@ export default function App() {
 
   return (
     <MapContainer
-      center={[35.5313429, 129.3057098, 17.86]}
+      center={[35.5408455, 129.3242894, 19.69]}
       zoom={20}
       scrollWheelZoom={true}
     >
@@ -23,10 +25,14 @@ export default function App() {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[35.5313429, 129.3057098, 17.86]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+      <Marker icon={icon} position={[35.5408455, 129.3242894, 19.69]}>
+        <Popup>1번</Popup>
+      </Marker>
+      <Marker icon={icon} position={[35.5411817, 129.3244302, 20.69]}>
+        <Popup>2번</Popup>
+      </Marker>
+      <Marker icon={icon} position={[35.5412533, 129.3236393, 20.69]}>
+        <Popup>3번</Popup>
       </Marker>
       {/*현재위치를 찾아주는 기능*/}
       {/* <LocationMarker />  */}
