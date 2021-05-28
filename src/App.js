@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import { Icon } from 'leaflet';
 // import * as parkData from './data/skateboard-parks.json';
@@ -16,6 +16,7 @@ const icon1 = new Icon({
   iconUrl: Marker1,
   iconSize: [70, 70],
 });
+
 const icon2 = new Icon({
   iconUrl: Marker2,
   iconSize: [70, 70],
@@ -42,14 +43,16 @@ export default function App() {
     [35.5412533, 129.3226393, 20.69],
     [35.5412533, 129.3216393, 20.69],
   ];
+  // const markerIconNumber = positions.map(index)
+  // const [str, setstr] = useState('');
   const makeMarker = positions.map((position, index) => (
-    <Marker icon={icon1} position={position}></Marker>
+    <Marker icon={icon1} position={position} />
   ));
 
   return (
     <MapContainer
       center={[35.5408455, 129.3242894, 19.69]}
-      zoom={20}
+      zoom={17}
       scrollWheelZoom={true}
     >
       <TileLayer
