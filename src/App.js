@@ -50,27 +50,29 @@ export default function App() {
   ));
 
   return (
-    <MapContainer
-      center={[35.5408455, 129.3242894, 19.69]}
-      zoom={17}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {/* {positions.map((data) => {
+    <>
+      <MapContainer
+        center={[35.5408455, 129.3242894, 19.69]}
+        zoom={17}
+        scrollWheelZoom={true}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* {positions.map((data) => {
         <Marker icon={icon1} position={[data[0], data[1], data[2]]}></Marker>;
       })} */}
-      {/* <Marker icon={icon1} position={[35.5408455, 129.3242894, 19.69]}></Marker>
+        {/* <Marker icon={icon1} position={[35.5408455, 129.3242894, 19.69]}></Marker>
       <Marker icon={icon2} position={[35.5411817, 129.3244302, 20.69]}></Marker>
       <Marker icon={icon3} position={[35.5412533, 129.3236393, 20.69]}></Marker>
       <Marker icon={icon4} position={[35.5412533, 129.3226393, 20.69]}></Marker>
       <Marker icon={icon5} position={[35.5412533, 129.3216393, 20.69]}></Marker> */}
 
-      {makeMarker}
-      {/*현재위치를 찾아주는 기능*/}
-      {/* <LocationMarker />  */}
-    </MapContainer>
+        {makeMarker}
+        {/*현재위치를 찾아주는 기능*/}
+        {/* <LocationMarker />  */}
+      </MapContainer>
+    </>
   );
 }
