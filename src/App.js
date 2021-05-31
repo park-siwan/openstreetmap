@@ -15,12 +15,10 @@ export default function App() {
     [35.5412533, 129.3226393, 20.69],
     [35.5412533, 129.3216393, 20.69],
   ];
-  const markerIconStorage = []; //마커가 저장되는 곳
 
-  //마커 이미지를 순서에 맞게 생성해주는 함수
+  //마커 아이콘을 순서에 맞게 생성해주는 함수
   let markerIconGenerator = () => {
     for (let i = 1; i <= markerPositions.length; i++) {
-      console.log(i);
       let icon = new Icon({
         iconUrl: `./images/marker_${i}.png`,
         iconSize: [70, 70],
@@ -28,6 +26,7 @@ export default function App() {
       markerIconStorage.push(icon);
     }
   };
+  const markerIconStorage = []; //마커 아이콘이 저장되는 곳
   markerIconGenerator();
 
   //위치(포지션)가 들어온 순서대로 순번이 매겨진 마커를 생성한다.
@@ -39,21 +38,29 @@ export default function App() {
     />
   ));
 
+  //웹화면을 프린트 해주는 기능
+  const onClickPrint = () => {
+    window.print();
+  };
+
   return (
-    <MapContainer
-      center={[35.5408455, 129.3242894, 19.69]} //첫 화면 설정
-      zoom={17}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+    <>
+      <MapContainer
+        center={[35.5408455, 129.3242894, 19.69]} //첫 화면 설정
+        zoom={17}
+        scrollWheelZoom={true}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-      {markerMake}
+        {markerMake}
 
-      {/* <LocationMarker />  */}
-      {/*LocationMarker : 현위치 찾는 기능*/}
-    </MapContainer>
+        {/* <LocationMarker />  */}
+        {/*LocationMarker : 현위치 찾는 기능*/}
+      </MapContainer>
+      <button onClick={onClickPrint}>인쇄하기</button>
+    </>
   );
 }
